@@ -368,11 +368,13 @@ do ($ = window.jQuery, window) ->
       return init()  if @$wrapper.is ":visible"
 
       initInterval = window.setInterval =>
-        if @$wrapper.is ":visible"
+        if @wrapper.parent().length > 0 and @$wrapper.is ":visible"
           init()
           window.clearInterval initInterval
         else if @isDestroyed is true
           window.clearInterval initInterval
+        else if @wrapper.parent().length <= 0
+          @destroy()
       , 50
 
     _elementHandlers: ->

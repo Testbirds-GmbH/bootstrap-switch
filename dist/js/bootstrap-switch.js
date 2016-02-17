@@ -497,11 +497,13 @@
         }
         return initInterval = window.setInterval((function(_this) {
           return function() {
-            if (_this.$wrapper.is(":visible")) {
+            if (_this.wrapper.parent().length > 0 && _this.$wrapper.is(":visible")) {
               init();
               return window.clearInterval(initInterval);
             } else if (_this.isDestroyed === true) {
               return window.clearInterval(initInterval);
+            } else if (_this.wrapper.parent().length <= 0) {
+              return _this.destroy();
             }
           };
         })(this), 50);
