@@ -502,7 +502,7 @@
               return window.clearInterval(initInterval);
             } else if (_this.isDestroyed === true) {
               return window.clearInterval(initInterval);
-            } else if (_this.wrapper.parent().length <= 0) {
+            } else if (_this.$wrapper.parent().length <= 0) {
               return _this.destroy();
             }
           };

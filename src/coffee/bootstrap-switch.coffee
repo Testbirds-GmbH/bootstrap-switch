@@ -373,7 +373,7 @@ do ($ = window.jQuery, window) ->
           window.clearInterval initInterval
         else if @isDestroyed is true
           window.clearInterval initInterval
-        else if @wrapper.parent().length <= 0
+        else if @$wrapper.parent().length <= 0
           @destroy()
       , 50
 
