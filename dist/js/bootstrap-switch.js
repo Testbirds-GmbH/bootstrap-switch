@@ -415,6 +415,7 @@
         if ($form.length) {
           $form.off("reset.bootstrapSwitch").removeData("bootstrap-switch");
         }
+        this.isDestroyed = true;
         this.$container.children().not(this.$element).remove();
         this.$element.unwrap().unwrap().off(".bootstrapSwitch").removeData("bootstrap-switch");
         return this.$element;
@@ -498,10 +499,12 @@
           return function() {
             if (_this.$wrapper.is(":visible")) {
               init();
+              return window.clearInterval(initInterval, 50);
+            } else if (_this.isDestroyed === true) {
               return window.clearInterval(initInterval);
             }
           };
-        })(this), 50);
+        })(this));
       };
 
       BootstrapSwitch.prototype._elementHandlers = function() {

@@ -307,6 +307,7 @@ do ($ = window.jQuery, window) ->
       $form = @$element.closest "form"
 
       $form.off("reset.bootstrapSwitch").removeData "bootstrap-switch" if $form.length
+      @isDestroyed = true
       @$container.children().not(@$element).remove()
       @$element.unwrap().unwrap().off(".bootstrapSwitch").removeData "bootstrap-switch"
       @$element
@@ -369,8 +370,9 @@ do ($ = window.jQuery, window) ->
       initInterval = window.setInterval =>
         if @$wrapper.is ":visible"
           init()
+          window.clearInterval initInterval, 50
+        else if @isDestroyed is true
           window.clearInterval initInterval
-      , 50
 
     _elementHandlers: ->
       @$element.on
