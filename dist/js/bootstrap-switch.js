@@ -499,12 +499,12 @@
           return function() {
             if (_this.$wrapper.is(":visible")) {
               init();
-              return window.clearInterval(initInterval, 50);
+              return window.clearInterval(initInterval);
             } else if (_this.isDestroyed === true) {
               return window.clearInterval(initInterval);
             }
           };
-        })(this));
+        })(this), 50);
       };
 
       BootstrapSwitch.prototype._elementHandlers = function() {

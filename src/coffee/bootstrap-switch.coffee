@@ -370,9 +370,10 @@ do ($ = window.jQuery, window) ->
       initInterval = window.setInterval =>
         if @$wrapper.is ":visible"
           init()
-          window.clearInterval initInterval, 50
+          window.clearInterval initInterval
         else if @isDestroyed is true
           window.clearInterval initInterval
+      , 50
 
     _elementHandlers: ->
       @$element.on
